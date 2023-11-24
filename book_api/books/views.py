@@ -65,6 +65,8 @@ class BooksRUD(APIView):
         Update Book
         '''
         book_instance = self.get_object(pk)
+
+        #Commit comment
         if not book_instance:
             return Response(
                 {"res": "Object not exists"}, 
