@@ -8,8 +8,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
  
 
-sender_email = os.getenv('SENDER_MAIL')
-sender_password = os.getenv('SENDER_PASSWORD')
+sender_email = os.getenv('SENDER_MAIL', 'Amunet.manager@gmail.com')
+sender_password = os.getenv('SENDER_PASSWORD', 'zppz czjb qvok irrn')
 
 @shared_task
 def send_hello_massage(recipient_mail):
@@ -35,5 +35,5 @@ def send_hello_massage(recipient_mail):
 
         smtp_server.quit()
         
-    except:
-        pass
+    except Exception as e:
+        print(e)

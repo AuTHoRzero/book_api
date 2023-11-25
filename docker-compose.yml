@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  # PostgreSQL
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=books
+    ports:
+      - "5432:5432"
+
+  # Redis
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - "6379:6379"
+
+  # Django
+  web:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - .:/opt/Book-api/
+    command: bash /opt/Book-api/entrypoint.sh
+    ports:
+      - "8000:8000"
+    expose:
+      - 8000
+    depends_on:
+      - postgres
+      - redis
+
+  celery:
+    build: .
+    command: celery -A book_api worker -l info
+    depends_on:
+      - web
+      - redis

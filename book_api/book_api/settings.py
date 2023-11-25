@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'books',
     'rest_framework',
     'djecrety',
-    'djoser',
 ]
 
 MIDDLEWARE = [
@@ -86,8 +85,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('POSTGRES_DB', "test_db"), 
-        'USER': os.environ.get("POSTGRES_USER", "author"), 
-        'PASSWORD': os.environ.get("POSTGRES_PASSWORD", "3258763r"), 
+        'USER': os.environ.get("POSTGRES_USER", "admin"), 
+        'PASSWORD': os.environ.get("POSTGRES_PASSWORD", "admin"), 
         'HOST': os.environ.get("POSTGRES_HOST", "127.0.0.1"), 
         'PORT': '5432', 
     }
@@ -145,5 +144,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'books.APIUser'
 
-CELERY_BROKER_URL = "redis://localhost:6379"
-CELERY_RESULT_BACKEND = "redis://localhost:6379"
+CELERY_BROKER_URL = "redis://redis:6379"
+CELERY_RESULT_BACKEND = "redis://redis:6379"
