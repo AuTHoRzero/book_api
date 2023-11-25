@@ -29,7 +29,7 @@ docker-compose up -d
 ```
 
 ## Use
-After these steps you can use this application, it will be available at 0.0.0.0.0:8000 on your pc
+After these steps you can use this application, it will be available at [0.0.0.0:8000](0.0.0.0.0:8000) on your pc
 
 ## Stop App
 ```
